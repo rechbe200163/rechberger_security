@@ -1,14 +1,17 @@
-import { Linking, SafeAreaView, Text, View, Button } from "react-native";
-import Navigator from "./routes/homeStack";
-import { StatusBar } from "expo-status-bar";
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import Home from "./screens/Home";
+import Details from "./screens/Details";
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View>
-      <SafeAreaView>
-        <Navigator />
-      </SafeAreaView>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Details" component={Details} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
