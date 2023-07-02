@@ -2,6 +2,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { StatusBar } from "expo-status-bar";
 
 import Home from "./screens/homeScreen";
 import Videos from "./screens/videosCaptured";
@@ -37,6 +38,7 @@ export default function App() {
         <Tab.Screen name={videosName} component={Videos} />
         <Tab.Screen name={profileName} component={Profile} />
       </Tab.Navigator>
+      <StatusBar style="auto" />
     </NavigationContainer>
   );
 }

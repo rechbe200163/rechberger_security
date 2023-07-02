@@ -1,7 +1,18 @@
 import React from "react";
-import { Text, Linking, Button, View } from "react-native";
+import { Text, Linking, Button, View, Alert, Platform } from "react-native";
+import { useEffect } from "react";
+import * as LocalAuthentication from "expo-local-authentication";
 
 export default function Details({ navigation }) {
+  let [isAuthenticated, setIsAuthenticated] = React.useState(false);
+
+  useEffect(() => {
+    async function authenticate() {
+      const result = await LocalAuthentication.authenticateAsync();
+      setIsAuthenticated(result.success);
+    }
+    authenticate();
+  }, []);
   return (
     <View className="flex-1 items-center justify-center bg-white">
       <Text className="text-center text-blue-800 font-medium text-lg w-32 truncate">
@@ -16,7 +27,9 @@ export default function Details({ navigation }) {
           About React
         </Text>
       </Text>
-      <Button title="🏠" onPress={() => navigation.navigate("Home")}></Button>
+      <Text className="text-center text-blue-800 font-medium text-lg w-32 truncate">
+        {isAuthenticated ? "Authenticated" : "Not Authenticated"}
+      </Text>
     </View>
   );
 }
