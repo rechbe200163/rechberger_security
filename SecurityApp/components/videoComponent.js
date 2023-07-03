@@ -8,6 +8,7 @@ export default VideoComponent = () => {
       }}
       style={{ width: 300, height: 300 }}
       controls={true}
+      resizeMode={"none"}
     />
   );
 };
