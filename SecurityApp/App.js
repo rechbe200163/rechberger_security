@@ -5,10 +5,9 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { StatusBar } from "expo-status-bar";
 
 import Home from "./screens/homeScreen";
-import Videos from "./screens/videosCaptured";
 import Profile from "./screens/usrProfile";
+import Video from "./screens/videosScreen";
 
-const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const homeName = "Home";
@@ -35,7 +34,7 @@ export default function App() {
         })}
       >
         <Tab.Screen name={homeName} component={Home} />
-        <Tab.Screen name={videosName} component={Videos} />
+        <Tab.Screen name={videosName} component={Video}/>
         <Tab.Screen name={profileName} component={Profile} />
       </Tab.Navigator>
       <StatusBar style="auto" />
