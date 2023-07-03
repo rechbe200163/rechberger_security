@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { View, Button, SafeAreaView, Text, Alert } from "react-native";
 import * as LocalAuthentication from "expo-local-authentication";
 import { useFocusEffect } from "@react-navigation/native";
+import videoComponent from "../components/videoComponent";
+import VideoComponent from "../components/videoComponent";
 
 export default function Videos() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -81,6 +83,7 @@ export default function Videos() {
           </Text>
         </Text>
       </View>
+      <VideoComponent />
     </SafeAreaView>
   );
 }
