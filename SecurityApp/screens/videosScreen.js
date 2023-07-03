@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { View, Button, SafeAreaView, Text, Alert } from "react-native";
 import * as LocalAuthentication from "expo-local-authentication";
 import { useFocusEffect } from "@react-navigation/native";
-import videoComponent from "../components/videoComponent";
 import VideoComponent from "../components/videoComponent";
 
 export default function Videos() {
@@ -52,7 +51,7 @@ export default function Videos() {
       clearTimeout(lockTimeoutRef.current);
       lockTimeoutRef.current = setTimeout(
         () => setIsAuthenticated(false),
-        20000
+        200000
       );
     }
   }, [isAuthenticated]);
@@ -66,21 +65,15 @@ export default function Videos() {
       </SafeAreaView>
     );
   }
+  //calcutale the date a month ago
+  const date = new Date();
+  date.setMonth(date.getMonth() - 1);
 
   return (
     <SafeAreaView className="flex-1">
-      <View className="flex-1 items-center justify-center bg-white">
-        <Text className="text-center text-blue-800 font-medium text-lg w-32 truncate">
-          Here you can see the videos recorded by the camera.
-          <Text
-            className="text-blue-600 underline text-xl"
-            onPress={() => {
-              Linking.openURL("https://aboutreact.com");
-            }}
-          >
-            {" "}
-            About React
-          </Text>
+      <View className="px-4 py-2">
+        <Text className="text-lg font-bold text-center">
+          Videos recorded since {date.toLocaleDateString()}
         </Text>
       </View>
       <VideoComponent />
